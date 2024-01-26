@@ -8,10 +8,15 @@ import Banner from "../assets/Images/banner.mp4"
 import CodeBlocks from "../componenets/core/HomePage/CodeBlocks"
 import TimelineSection from '../componenets/core/HomePage/TimelineSection'
 import LearningLanguageSection from '../componenets/core/HomePage/LearningLanguageSection'
+import InstructorSection from '../componenets/core/HomePage/InstructorSection'
+import Footer from '../componenets/common/Footer'
+import ExploreMore from '../componenets/core/HomePage/ExploreMore'
+
 
 const Home = () => {
   return (
     <div>
+      
       {/*Section1  */}
       <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white">
         {/* Become a Instructor Button */}
@@ -49,7 +54,7 @@ const Home = () => {
         </div>
 
         {/* Video */}
-        <div className="w-[69%] mx-3 my-12 shadow-[10px_-5px_50px_-5px] shadow-blue-200">
+        <div className="w-[69%] mx-3 my-12 shadow-[5px_5px_60px_0] shadow-blue-200">
           <video
             className="shadow-[20px_20px_rgba(255,255,255)]"
             muted
@@ -85,7 +90,7 @@ const Home = () => {
               active: false,
             }}
             codeColor={"text-yellow-25"}
-            codeblock={`<!DOCTYPE html>\n <html lang="en">\n<head>\n<title>This is myPage</title>\n</head>\n<body>\n<h1><a href="/">Header</a></h1>\n<nav> <a href="/one">One</a> <a href="/two">Two</a> <a href="/three">Three</a>\n</nav>\n</body>`}
+            codeblock={`<!DOCTYPE html>\n<html lang="en">\n<head>\n<title>This is myPage</title>\n</head>\n<body>\n<h1><a href="/">Header</a></h1>\n<nav> <a href="/one">One</a> <a href="/two">Two</a> <a href="/three">Three</a>\n</nav>\n</body>`}
             backgroundGradient={<div className="codeblock1 absolute"></div>}
           />
         </div>
@@ -120,15 +125,20 @@ const Home = () => {
         </div>
 
         {/* Explore Section */}
-        {/* <ExploreMore /> */}
+        <ExploreMore />
       </div>
+
 
       {/*Section 2  */}
       <div className="bg-pure-greys-5 text-richblack-700">
+
         <div className="homepage_bg h-[320px]">
+
           {/* Explore Full Catagory Section */}
           <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8">
+
             <div className="lg:h-[150px]"></div>
+
             <div className="flex flex-row gap-7 text-white lg:mt-8">
               <CTAButton active={true} linkto={"/signup"}>
                 <div className="flex items-center gap-2">
@@ -140,16 +150,21 @@ const Home = () => {
                 Learn More
               </CTAButton>
             </div>
+
           </div>
+
         </div>
 
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 ">
+
           {/* Job that is in Demand - Section 1 */}
           <div className="mb-10 mt-[-100px] flex flex-col justify-between gap-7 lg:mt-20 lg:flex-row lg:gap-0">
+
             <div className="text-4xl font-semibold lg:w-[45%] ">
               Get the skills you need for a{" "}
               <HighlightText text={"job that is in demand."} />
             </div>
+
             <div className="flex flex-col items-start gap-10 lg:w-[40%]">
               <div className="text-[16px]">
                 The modern StudyNotion is the dictates its own terms. Today, to
@@ -160,6 +175,7 @@ const Home = () => {
                 <div className="">Learn More</div>
               </CTAButton>
             </div>
+
           </div>
 
           {/* Timeline Section - Section 2 */}
@@ -170,11 +186,22 @@ const Home = () => {
         </div>
       </div>
 
+
       {/*Section 3 */}
+      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+        {/* Become a instructor section */}
+        <InstructorSection />
+
+        {/* Reviws from Other Learner */}
+        <h1 className="text-center text-4xl font-semibold mt-8">
+          Reviews from other learners
+        </h1>
+        {/* <ReviewSlider /> */}
+      </div>
 
 
       {/*Footer */}
-
+      <Footer />
 
     </div>
   )
