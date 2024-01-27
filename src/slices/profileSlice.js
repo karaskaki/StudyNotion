@@ -12,6 +12,7 @@ export const profileSlice = createSlice({
     setUser(state, value) {
       state.user = value.payload
     },
+    
     setLoading(state, value) {
       state.loading = value.payload
     },

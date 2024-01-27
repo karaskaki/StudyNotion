@@ -1,11 +1,11 @@
 
-
-
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./componenets/common/Navbar";
-
+import OpenRoute from "./componenets/core/auth/OpenRoute";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -13,7 +13,27 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={ <Home/> } />
-      </Routes>
+      
+
+        <Route
+            path="login"
+            element={
+              <OpenRoute>
+                <Login />
+              </OpenRoute>
+            }
+          />
+
+        <Route
+            path="signup"
+            element={
+              <OpenRoute>
+                <Signup />
+              </OpenRoute>
+            }
+          />
+
+  </Routes>
     </div>
   );
 }
