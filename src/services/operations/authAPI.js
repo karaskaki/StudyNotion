@@ -14,11 +14,12 @@ const {
   RESETPASSWORD_API,
 } = endpoints
 
+
+
 export function sendOtp(email, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
-
     try {
       const response = await apiConnector("POST", SENDOTP_API, {
         email,
@@ -38,11 +39,12 @@ export function sendOtp(email, navigate) {
       console.log("SENDOTP API ERROR............", error)
       toast.error("Could Not Send OTP")
     }
-    
     dispatch(setLoading(false))
     toast.dismiss(toastId)
   }
 }
+
+
 
 export function signUp(
   accountType,
@@ -85,6 +87,8 @@ export function signUp(
   }
 }
 
+
+
 export function login(email, password, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
@@ -118,6 +122,8 @@ export function login(email, password, navigate) {
   }
 }
 
+
+
 export function getPasswordResetToken(email, setEmailSent) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
@@ -143,6 +149,8 @@ export function getPasswordResetToken(email, setEmailSent) {
     dispatch(setLoading(false))
   }
 }
+
+
 
 export function resetPassword(password, confirmPassword, token, navigate) {
   return async (dispatch) => {
@@ -172,6 +180,8 @@ export function resetPassword(password, confirmPassword, token, navigate) {
   }
 }
 
+
+  
 export function logout(navigate) {
   return (dispatch) => {
     dispatch(setToken(null))

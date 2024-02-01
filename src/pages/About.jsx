@@ -4,17 +4,19 @@ import FoundingStory from "../assets/Images/FoundingStory.png"
 import BannerImage1 from "../assets/Images/aboutus1.webp"
 import BannerImage2 from "../assets/Images/aboutus2.webp"
 import BannerImage3 from "../assets/Images/aboutus3.webp"
-import Footer from "../components/Common/Footer"
-import ReviewSlider from "../components/Common/ReviewSlider"
-import ContactFormSection from "../components/core/AboutPage/ContactFormSection"
-import LearningGrid from "../components/core/AboutPage/LearningGrid"
-import Quote from "../components/core/AboutPage/Quote"
-import StatsComponenet from "../components/core/AboutPage/Stats"
-import HighlightText from "../components/core/HomePage/HighlightText"
+import Footer from "../componenets/common/Footer"
+import ReviewSlider from "../componenets/common/ReviewSlider"
+import ContactFormSection from "../componenets/core/About/ContactFormSection"
+import LearningGrid from "../componenets/core/About/LearningGrid"
+import Quote from "../componenets/core/About/Quote"
+import StatsComponenet from "../componenets/core/About/Stats"
+import HighlightText from "../componenets/core/HomePage/HighlightText"
 
 const About = () => {
   return (
     <div>
+
+      {/* Section-1 */}
       <section className="bg-richblack-700">
         <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
           <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">
@@ -27,15 +29,19 @@ const About = () => {
               and nurturing a vibrant learning community.
             </p>
           </header>
+
           <div className="sm:h-[70px] lg:h-[150px]"></div>
+
           <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
             <img src={BannerImage1} alt="" />
             <img src={BannerImage2} alt="" />
             <img src={BannerImage3} alt="" />
           </div>
+
         </div>
       </section>
 
+      {/* Section-2 */}
       <section className="border-b border-richblack-700">
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
           <div className="h-[100px] "></div>
@@ -43,6 +49,7 @@ const About = () => {
         </div>
       </section>
 
+      {/* Section-3 */}
       <section>
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
           <div className="flex flex-col items-center gap-10 lg:flex-row justify-between">
@@ -102,7 +109,10 @@ const About = () => {
         </div>
       </section>
 
+      {/* Section-4 */}
       <StatsComponenet />
+
+      {/* Section-5 */}
       <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
         <LearningGrid />
         <ContactFormSection />
