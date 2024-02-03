@@ -114,30 +114,33 @@ const ContactUsForm = () => {
         </label>
 
         <div className="flex gap-5">
+
+          {/* Dropdown */}
           <div className="flex w-[81px] flex-col gap-2">
             <select
-              type="text"
-              name="firstname"
-              id="firstname"
-              placeholder="Enter first name"
+              name="dropdown"
+              id="dropdown"
+              placeholder="00"
               className="form-style"
               {...register("countrycode", { required: true })}
             >
-              {CountryCode.map((ele, i) => {
+              {CountryCode.map((element, index) => {
                 return (
-                  <option key={i} value={ele.code}>
-                    {ele.code} -{ele.country}
+                  <option key={index} value={element.code}>
+                    {element.code} - {element.country}
                   </option>
                 )
               })}
             </select>
+
           </div>
           <div className="flex w-[calc(100%-90px)] flex-col gap-2">
+            
             <input
               type="number"
               name="phonenumber"
               id="phonenumber"
-              placeholder="12345 67890"
+              placeholder="12345-67890"
               className="form-style"
               {...register("phoneNo", {
                 required: {
@@ -148,6 +151,7 @@ const ContactUsForm = () => {
                 minLength: { value: 10, message: "Invalid Phone Number" },
               })}
             />
+
           </div>
         </div>
         {errors.phoneNo && (

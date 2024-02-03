@@ -10,6 +10,11 @@ import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
+import MyProfile from "./componenets/core/Dashboard/MyProfile";
+import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./componenets/core/auth/PrivateRoute";
+import Error from "./pages/Error";
 
 function App() {
   return (
@@ -73,6 +78,24 @@ function App() {
           }
         />
 
+        <Route path="/contact" element={<Contact />} />
+
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="/dashboard/enrolled-courses" element={<Error />} />
+          <Route path="/dashboard/purchase-history" element={<Error />} />
+          </Route>
+        
+        
+
+        <Route path="*" element={<OpenRoute><Error /></OpenRoute>} />
+        
   </Routes>
     </div>
   );

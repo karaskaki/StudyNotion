@@ -10,6 +10,7 @@ const ContactFormSection = () => {
         <div className="mt-12 mx-auto">
           <ContactUsForm />
         </div>
+
     </div>
   )
 }
