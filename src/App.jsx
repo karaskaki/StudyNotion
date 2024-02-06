@@ -15,8 +15,17 @@ import MyProfile from "./componenets/core/Dashboard/MyProfile";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./componenets/core/auth/PrivateRoute";
 import Error from "./pages/Error";
+import EnrolledCourses from "./componenets/core/Dashboard/EnrolledCourses";
+import Settings from "./componenets/core/Dashboard/Settings/index"
+import Cart from "./componenets/core/Dashboard/Cart";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import { useSelector } from "react-redux";
+import MyCourses from "./componenets/core/Dashboard/My Courses/MyCourses";
+
 
 function App() {
+
+  const {user} = useSelector((state) => state.profile)
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <Navbar/>
@@ -88,8 +97,34 @@ function App() {
           }
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
-          <Route path="/dashboard/enrolled-courses" element={<Error />} />
-          <Route path="/dashboard/purchase-history" element={<Error />} />
+          <Route path="/dashboard/Settings" element={<Settings />} />
+
+
+          {
+            user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route path="/dashboard/cart" element={<Cart />} />
+                <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
+              </>
+            )  
+          }
+
+          {
+            user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+            <>
+              {/* <Route path="dashboard/add-course" element={<AddCourse />} /> */}
+              <Route path="dashboard/my-courses" element={<MyCourses />} />
+              {/* <Route
+                path="dashboard/edit-course/:courseId"
+                element={<EditCourse />}
+              />
+              <Route
+                path="dashboard/instructor"
+                element={<InstructorDashboard />}
+              /> */}
+            </>
+          )}
+
           </Route>
         
         

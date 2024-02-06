@@ -1,4 +1,3 @@
-import CourseCard from "../componenets/core/HomePage/CourseCard"
 
 export const ACCOUNT_TYPE = {
     STUDENT: "Student",

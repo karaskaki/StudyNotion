@@ -11,6 +11,7 @@ const {
   GET_INSTRUCTOR_DATA_API,
 } = profileEndpoints
 
+
 export function getUserDetails(token, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
@@ -38,6 +39,7 @@ export function getUserDetails(token, navigate) {
   }
 }
 
+
 export async function getUserEnrolledCourses(token) {
   const toastId = toast.loading("Loading...")
   let result = []
@@ -45,7 +47,7 @@ export async function getUserEnrolledCourses(token) {
     const response = await apiConnector(
       "GET",
       GET_USER_ENROLLED_COURSES_API,
-      null,
+      null, 
       {
         Authorization: `Bearer ${token}`,
       }
@@ -66,6 +68,7 @@ export async function getUserEnrolledCourses(token) {
   toast.dismiss(toastId)
   return result
 }
+
 
 export async function getInstructorData(token) {
   const toastId = toast.loading("Loading...")
