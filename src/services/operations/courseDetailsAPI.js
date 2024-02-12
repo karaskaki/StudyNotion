@@ -1,4 +1,5 @@
 import { toast } from "react-hot-toast"
+import { setProgress } from "../../slices/loadingBarSlice"
 
 // import { updateCompletedLectures } from "../../slices/viewCourseSlice"
 // import { setLoading } from "../../slices/profileSlice";
@@ -86,6 +87,7 @@ export const fetchCourseCategories = async () => {
 export const addCourseDetails = async (data, token) => {
   let result = null
   const toastId = toast.loading("Loading...")
+  
   try {
     const response = await apiConnector("POST", CREATE_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
@@ -97,6 +99,7 @@ export const addCourseDetails = async (data, token) => {
     }
     toast.success("Course Details Added Successfully")
     result = response?.data?.data
+
   } catch (error) {
     console.log("CREATE COURSE API ERROR............", error)
     toast.error(error.message)
@@ -110,6 +113,7 @@ export const editCourseDetails = async (data, token) => {
   let result = null
   const toastId = toast.loading("Loading...")
   try {
+    console.log("Good")
     const response = await apiConnector("POST", EDIT_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
@@ -121,6 +125,7 @@ export const editCourseDetails = async (data, token) => {
     toast.success("Course Details Updated Successfully")
     result = response?.data?.data
   } catch (error) {
+    console.log("bad")
     console.log("EDIT COURSE API ERROR............", error)
     toast.error(error.message)
   }
@@ -237,6 +242,7 @@ export const deleteSection = async (data, token) => {
   toast.dismiss(toastId)
   return result
 }
+
 // delete a subsection
 export const deleteSubSection = async (data, token) => {
   let result = null
@@ -386,3 +392,77 @@ export const createRating = async (data, token) => {
   toast.dismiss(toastId)
   return success
 }
+
+// //add course to Category
+// export const addCourseToCategory = async (data, token) => {
+//   const toastId = toast.loading("Loading...");
+//   let success = false;
+//   try {
+//     const response = await apiConnector(
+//       "POST",
+//       ADD_COURSE_TO_CATEGORY_API,
+//       data,
+//       {
+//         Authorisation: `Bearer ${token}`,
+//       }
+//     );
+//     console.log("ADD COURSE TO CATEGORY API RESPONSE............", response);
+//     if (!response?.data?.success) {
+//       throw new Error("Could Not Add Course To Category");
+//     }
+//     toast.success("Course Added To Category");
+//     success = true;
+//   } catch (error) {
+//     success = false;
+//     console.log("ADD COURSE TO CATEGORY API ERROR............", error);
+//     toast.error(error.message);
+//   }
+//   toast.dismiss(toastId);
+//   return success;
+// };
+
+// //search courses
+// export const searchCourses = async (searchQuery, dispatch) => {
+//   // const toastId = toast.loading("Loading...")
+//   dispatch(setProgress(50));
+//   let result = null;
+//   try {
+//     const response = await apiConnector("POST", SEARCH_COURSES_API, {
+//       searchQuery: searchQuery,
+//     });
+//     console.log("SEARCH COURSES API RESPONSE............", response);
+//     if (!response?.data?.success) {
+//       throw new Error("Could Not Search Courses");
+//     }
+//     result = response?.data?.data;
+//   } catch (error) {
+//     console.log("SEARCH COURSES API ERROR............", error);
+//     toast.error(error.message);
+//   }
+//   // toast.dismiss(toastId)
+//   dispatch(setProgress(100));
+//   return result;
+// };
+
+// //create category
+// export const createCategory = async (data, token) => {
+//   const toastId = toast.loading("Loading...");
+//   let success = false;
+//   try {
+//     const response = await apiConnector("POST", CREATE_CATEGORY_API, data, {
+//       Authorisation: `Bearer ${token}`,
+//     });
+//     console.log("CREATE CATEGORY API RESPONSE............", response);
+//     if (!response?.data?.success) {
+//       throw new Error("Could Not Create Category");
+//     }
+//     toast.success("Category Created");
+//     success = true;
+//   } catch (error) {
+//     success = false;
+//     console.log("CREATE CATEGORY API ERROR............", error);
+//     toast.error(error.message);
+//   }
+//   toast.dismiss(toastId);
+//   return success;
+// };

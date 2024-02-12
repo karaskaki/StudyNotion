@@ -36,22 +36,41 @@ function Navbar() {
   const { user } = useSelector((state) => state.profile)
   const { totalItems } = useSelector((state) => state.cart)
   const location = useLocation()
-
-  const [subLinks, setSubLinks] = useState([])
   const [loading, setLoading] = useState(false)
+  const [sublinks, setsublinks] = useState([]);
 
   useEffect(() => {
     (async () => {
       setLoading(true)
       try {
         const res = await apiConnector("GET", categories.CATEGORIES_API)
-        setSubLinks(res.data.data)
+        setsublinks(res.data.data)
       } catch (error) {
         console.log("Could not fetch Categories.", error)
       }
       setLoading(false)
     })()
   }, [])
+
+
+
+  // const fetchSublinks = async () => {
+  //       try {
+  //           const result = await apiConnector("GET", categories.CATEGORIES_API);
+  //           if (result?.data?.data?.length > 0) {
+  //               setsublinks(result?.data?.data);
+  //           }
+  //           localStorage.setItem("sublinks", JSON.stringify(result.data.data));
+
+  //       } catch (error) {
+  //           // setsublinks(JSON.parse(localStorage.getItem("sublinks")));
+  //           // console.log("could not fetch sublinks",localStorage.getItem("sublinks"));
+  //           console.log(error);
+  //       }
+  //   }
+  //   useEffect(() => {
+  //       fetchSublinks();
+  //   }, [])
 
   // console.log("sub links", subLinks)
 
@@ -98,9 +117,9 @@ function Navbar() {
 
                         {loading ? (
                           <div className="spinner"><p className="text-center">Loading...</p></div>
-                        ) : subLinks.length ? (
+                        ) : sublinks.length ? (
                           <>
-                            {subLinks
+                            {sublinks
                               ?.filter(
                                 (subLink) => subLink?.courses?.length > 0
                               )
