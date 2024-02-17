@@ -1,0 +1,35 @@
+express 
+nodemon 
+dotenv 
+mongoose 
+cookie-parser 
+jsonwebtoken 
+nodemailer 
+otp-generator 
+bcrypt 
+cloudinary 
+razorpay 
+cors 
+express-fileupload 
+bcryptjs 
+crypto-random-string 
+node-schedule
+
+// HW: IMP: Add State Management for payment like captureed, Authorized, Dispatch and so on...
+
+npm i concurrently -> it is used to run server concurrently , mainly to run backend and frontend simultaneously
+
+react-router-dom
+react-icons
+react-type-animation
+ @reduxjs/toolkit
+ react-redux
+ react-hot-toast
+ axios
+ react-otp-input
+ react-hook-form
+ @ramonak/react-progress-bar
+ react-rating-stars-component
+ react-super-responsive-table
+ react-dropzone
+ video-react
