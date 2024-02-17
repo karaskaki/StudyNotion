@@ -444,7 +444,7 @@ export const createRating = async (data, token) => {
 //   return result;
 // };
 
-// //create category
+//create category
 // export const createCategory = async (data, token) => {
 //   const toastId = toast.loading("Loading...");
 //   let success = false;

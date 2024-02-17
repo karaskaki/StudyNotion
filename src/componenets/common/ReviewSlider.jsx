@@ -1,7 +1,7 @@
 const ReviewSlider = () => {
   return (
     <div>
-        
+        hello
     </div>
   )
 }

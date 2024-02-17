@@ -12,39 +12,25 @@ import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/auth/ProfileDropdown"
 
 
-// const subLinks = [
-//   {
-//     title: "Python",
-//     link: "/catalog/python",
-//   },
-//   {
-//     title: "javascript",
-//     link: "/catalog/javascript",
-//   },
-//   {
-//     title: "web-development",
-//     link: "/catalog/web-development",
-//   },
-//   {
-//     title: "Android Development",
-//     link: "/catalog/Android Development",
-//   },
-// ];
-
 function Navbar() {
+
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
   const { totalItems } = useSelector((state) => state.cart)
+
   const location = useLocation()
+
+  const [subLinks, setSubLinks] = useState([])
   const [loading, setLoading] = useState(false)
-  const [sublinks, setsublinks] = useState([]);
 
   useEffect(() => {
     (async () => {
       setLoading(true)
       try {
         const res = await apiConnector("GET", categories.CATEGORIES_API)
-        setsublinks(res.data.data)
+
+        setSubLinks(res.data.data)
+        
       } catch (error) {
         console.log("Could not fetch Categories.", error)
       }
@@ -52,27 +38,7 @@ function Navbar() {
     })()
   }, [])
 
-
-
-  // const fetchSublinks = async () => {
-  //       try {
-  //           const result = await apiConnector("GET", categories.CATEGORIES_API);
-  //           if (result?.data?.data?.length > 0) {
-  //               setsublinks(result?.data?.data);
-  //           }
-  //           localStorage.setItem("sublinks", JSON.stringify(result.data.data));
-
-  //       } catch (error) {
-  //           // setsublinks(JSON.parse(localStorage.getItem("sublinks")));
-  //           // console.log("could not fetch sublinks",localStorage.getItem("sublinks"));
-  //           console.log(error);
-  //       }
-  //   }
-  //   useEffect(() => {
-  //       fetchSublinks();
-  //   }, [])
-
-  // console.log("sub links", subLinks)
+  // console.log("sub links: ", subLinks)
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
@@ -115,30 +81,30 @@ function Navbar() {
 
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
 
-                        {loading ? (
-                          <div className="spinner"><p className="text-center">Loading...</p></div>
-                        ) : sublinks.length ? (
+                        {
+                          loading ? (
+                            <div className="spinner"></div>
+                          ) : subLinks.length > 0 ? (
                           <>
-                            {sublinks
-                              ?.filter(
-                                (subLink) => subLink?.courses?.length > 0
-                              )
-                              ?.map((subLink, index) => (
-                                <Link
-                                  to={`/catalog/${subLink.name
-                                    .split(" ")
-                                    .join("-")
-                                    .toLowerCase()}`}
-                                  className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
-                                  key={index}
-                                >
+                              {
+                                subLinks
+                                // ?.filter((subLink) => subLink?.courses?.length > 0) 
+                                ?.map((subLink, index) => (
+                                  <Link
+                                    to={`/catalog/${subLink.name
+                                      .split(" ")
+                                      .join("-")
+                                      .toLowerCase()}`}
+                                    className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
+                                    key={index}
+                                  >
                                   <p>{subLink.name}</p>
                                 </Link>
                               ))}
-                          </>
-                        ) : (
-                          <p className="text-center">No Courses Found</p>
-                        )}
+                            </>
+                          ) : (<p>No Course Found</p>)
+                        }
+
                       </div>
                     </div>
                   </>

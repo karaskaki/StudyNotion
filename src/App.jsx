@@ -20,8 +20,10 @@ import Settings from "./componenets/core/Dashboard/Settings/index"
 import Cart from "./componenets/core/Dashboard/Cart";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import { useSelector } from "react-redux";
-import MyCourses from "./componenets/core/Dashboard/My Courses/MyCourses";
+import MyCourses from "./componenets/core/Dashboard/MyCourses";
 import AddCourse from "./componenets/core/Dashboard/AddCourse";
+import EditCourse from "./componenets/core/Dashboard/EditCourse";
+import Catalog from "./pages/Catalog";
 
 
 
@@ -33,7 +35,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={ <Home/> } />
-      
+        <Route path="catalog/:catalogName" element={<Catalog />} />
 
         <Route
             path="login"
@@ -52,6 +54,7 @@ function App() {
             </OpenRoute>
           }
         />
+
          <Route
           path="verify-email"
           element={
@@ -116,11 +119,11 @@ function App() {
             <>
               <Route path="dashboard/my-courses" element={<MyCourses />} />
               <Route path="dashboard/add-course" element={<AddCourse />} />
-              {/* <Route
+              <Route
                 path="dashboard/edit-course/:courseId"
                 element={<EditCourse />}
               />
-              <Route
+              {/* <Route
                 path="dashboard/instructor"
                 element={<InstructorDashboard />}
               /> */}
