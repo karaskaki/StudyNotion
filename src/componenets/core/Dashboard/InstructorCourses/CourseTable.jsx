@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table"
 
 import { setCourse, setEditCourse } from "../../../../slices/courseSlice"
-  import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import { useState } from "react"
 import { FaCheck } from "react-icons/fa"
 import { FiEdit2 } from "react-icons/fi"
@@ -126,6 +126,7 @@ export default function CoursesTable({ courses, setCourses }) {
                   >
                     <FiEdit2 size={20} />
                   </button>
+                  
                   <button
                     disabled={loading}
                     onClick={() => {
