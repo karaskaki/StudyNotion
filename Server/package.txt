@@ -33,3 +33,4 @@ react-type-animation
  react-super-responsive-table
  react-dropzone
  video-react
+ swiper

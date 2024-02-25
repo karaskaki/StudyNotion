@@ -27,8 +27,11 @@ export default function CoursesTable({ courses, setCourses }) {
   const TRUNCATE_LENGTH = 30
 
   const handleCourseDelete = async (courseId) => {
+
     setLoading(true)
+
     await deleteCourse({ courseId: courseId }, token)
+    
     const result = await fetchInstructorCourses(token)
     if (result) {
       setCourses(result)
@@ -126,7 +129,7 @@ export default function CoursesTable({ courses, setCourses }) {
                   >
                     <FiEdit2 size={20} />
                   </button>
-                  
+
                   <button
                     disabled={loading}
                     onClick={() => {
