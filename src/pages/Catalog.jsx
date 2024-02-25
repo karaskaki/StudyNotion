@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 
+
 // import CourseCard from "../components/Catalog/CourseCard"
 // import CourseSlider from "../components/Catalog/CourseSlider"
 import Footer from "../componenets/common/Footer"
@@ -12,6 +13,7 @@ import { categories } from "../services/apis"
 import { getCatalogPageData } from "../services/operations/pageAndComponentDatas"
 import Error from "./Error"
 
+// Catlog function
 function Catalog() {
 
   const { loading } = useSelector((state) => state.profile)
@@ -108,7 +110,7 @@ function Catalog() {
           </p>
         </div>
         <div>
-          <Course_Slider
+          < Course_Slider
             Courses={catalogPageData?.data?.selectedCategory?.courses}
           />
         </div>
