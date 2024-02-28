@@ -45,8 +45,10 @@ export default function EnrolledCourses() {
 
           {/* TODO: Modify this Empty State */}
         </p>
+        
       ) : (
         <div className="my-8 text-richblack-5">
+
           {/* Headings */}
           <div className="flex rounded-t-lg bg-richblack-500 ">
             <p className="w-[45%] px-5 py-3">Course Name</p>

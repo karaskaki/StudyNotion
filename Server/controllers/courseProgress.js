@@ -5,6 +5,7 @@ const CourseProgress = require("../models/CourseProgress")
 const Course = require("../models/Course")
 
 exports.updateCourseProgress = async (req, res) => {
+  
   const { courseId, subsectionId } = req.body
   const userId = req.user.id
 

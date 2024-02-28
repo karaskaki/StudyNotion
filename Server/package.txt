@@ -34,3 +34,5 @@ react-type-animation
  react-dropzone
  video-react
  swiper
+ react-markdown
+ copy-to-clipboard
