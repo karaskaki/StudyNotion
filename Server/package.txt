@@ -36,3 +36,6 @@ react-type-animation
  swiper
  react-markdown
  copy-to-clipboard
+ react-loading-skeleton
+  react-chartjs-2
+  chart.js

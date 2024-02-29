@@ -10,7 +10,7 @@ const {
   updateDisplayPicture,
   getEnrolledCourses,
   instructorDashboard,
-} = require("../controllers/profile")
+} = require("../controllers/Profile")
 
 // ********************************************************************************************************
 //                                      Profile routes

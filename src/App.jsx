@@ -13,7 +13,7 @@ import AddCourse from "./componenets/core/Dashboard/AddCourse"
 import Cart from "./componenets/core/Dashboard/Cart"
 import EditCourse from "./componenets/core/Dashboard/EditCourse"
 import EnrolledCourses from "./componenets/core/Dashboard/EnrolledCourses"
-import Instructor from "./componenets/core/Dashboard/Instructor"
+import Instructor from "./componenets/core/Dashboard/InstructorDashboard/Instructor"
 import MyCourses from "./componenets/core/Dashboard/MyCourses"
 import MyProfile from "./componenets/core/Dashboard/MyProfile"
 import Settings from "./componenets/core/Dashboard/Settings"
@@ -35,6 +35,7 @@ import VerifyEmail from "./pages/VerifyEmail"
 import ViewCourse from "./pages/ViewCourse"
 import { getUserDetails } from "./services/operations/profileAPI"
 import { ACCOUNT_TYPE } from "./utils/constants"
+import SearchCourse from "./pages/SearchCourse";
 
 function App() {
   const dispatch = useDispatch()
@@ -108,6 +109,8 @@ function App() {
             </OpenRoute>
           }
         />
+
+        <Route path="/search/:searchQuery" element={<SearchCourse />} />
         
         {/* Private Route - for Only Logged in User */}
         <Route

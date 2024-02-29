@@ -13,6 +13,7 @@ const {
   editCourse,
   getInstructorCourses,
   deleteCourse,
+  searchCourse,
 } = require("../controllers/Course")
 
 // Tags Controllers Import
@@ -42,8 +43,8 @@ const {
 const {
   createRating,
   getAverageRating,
-  getAllRatingReview,
-} = require("../controllers/RatingandReview")
+  getAllRating,
+} = require("../controllers/RatingAndReview")
 
 const {
   updateCourseProgress,
@@ -86,6 +87,8 @@ router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress)
 // router.post("/getProgressPercentage", auth, isStudent, getProgressPercentage)
 // Delete a Course
 router.delete("/deleteCourse", deleteCourse)
+// Search Courses
+router.post("/searchCourse", searchCourse);
 
 // ********************************************************************************************************
 //                                      Category routes (Only by Admin)
@@ -101,6 +104,6 @@ router.post("/getCategoryPageDetails", categoryPageDetails)
 // ********************************************************************************************************
 router.post("/createRating", auth, isStudent, createRating)
 router.get("/getAverageRating", getAverageRating)
-// router.get("/getReviews", getAllRatingReview)
+router.get("/getReviews", getAllRating)
 
 module.exports = router

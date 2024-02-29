@@ -1,6 +1,7 @@
 const RatingAndReview = require("../models/RatingAndReview");
 const Course = require("../models/Course");
 const { isStudent } = require("../middleware/auth");
+const { default: mongoose } = require("mongoose");
 
 
 // Create Rating and review
@@ -12,13 +13,14 @@ exports.createRating = async (req, res) => {
           const userId = req.user.id;
 
           // fetch data from req's body
-          const {rating, review, CourseId} = req.body;
+          const {rating, review, courseId} = req.body;
 
           // check if user is enrolled or not
           const courseDetails = await Course.findOne(
-                                             {_id: CourseId,
+                                             {_id: courseId,
                                              studentsEnrolled: {$elemMatch: {$eq: userId}},
                                         });  
+          console.log("Course Details: ",courseDetails )
 
           if(!courseDetails) {
                return res.status(404).json({
@@ -30,7 +32,7 @@ exports.createRating = async (req, res) => {
           // check if user already reviewd the course
           const alreadyReviewed = await RatingAndReview.findOne({
                                                        user: userId,
-                                                       course: CourseId,
+                                                       course: courseId,
                                                   });
 
           if(alreadyReviewed) {
@@ -43,12 +45,12 @@ exports.createRating = async (req, res) => {
           // create rating and review
           const ratingReview = await RatingAndReview.create({
                                                   rating, review,
-                                                  course: CourseId,
+                                                  course: courseId,
                                                   user: userId,
           })
 
           // update the course with the rating and review
-          const UpdatedCourseDetails = await Course.findByIdAndUpdate({_id: CourseId}, 
+          const UpdatedCourseDetails = await Course.findByIdAndUpdate({_id: courseId}, 
                                         {
                                              $push: {
                                                   ratingAndReviews:  ratingReview._id,

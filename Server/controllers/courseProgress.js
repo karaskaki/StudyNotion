@@ -5,7 +5,7 @@ const CourseProgress = require("../models/CourseProgress")
 const Course = require("../models/Course")
 
 exports.updateCourseProgress = async (req, res) => {
-  
+
   const { courseId, subsectionId } = req.body
   const userId = req.user.id
 
@@ -42,6 +42,7 @@ exports.updateCourseProgress = async (req, res) => {
     await courseProgress.save()
 
     return res.status(200).json({ message: "Course progress updated" })
+    
   } catch (error) {
     console.error(error)
     return res.status(500).json({ error: "Internal server error" })

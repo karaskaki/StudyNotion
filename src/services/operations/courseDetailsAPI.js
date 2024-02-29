@@ -23,6 +23,7 @@ const {
   GET_FULL_COURSE_DETAILS_AUTHENTICATED,
   CREATE_RATING_API,
   LECTURE_COMPLETION_API,
+  SEARCH_COURSES_API,
 } = courseEndpoints
 
 export const getAllCourses = async () => {
@@ -423,28 +424,28 @@ export const createRating = async (data, token) => {
 //   return success;
 // };
 
-// //search courses
-// export const searchCourses = async (searchQuery, dispatch) => {
-//   // const toastId = toast.loading("Loading...")
-//   dispatch(setProgress(50));
-//   let result = null;
-//   try {
-//     const response = await apiConnector("POST", SEARCH_COURSES_API, {
-//       searchQuery: searchQuery,
-//     });
-//     console.log("SEARCH COURSES API RESPONSE............", response);
-//     if (!response?.data?.success) {
-//       throw new Error("Could Not Search Courses");
-//     }
-//     result = response?.data?.data;
-//   } catch (error) {
-//     console.log("SEARCH COURSES API ERROR............", error);
-//     toast.error(error.message);
-//   }
-//   // toast.dismiss(toastId)
-//   dispatch(setProgress(100));
-//   return result;
-// };
+//search courses
+export const searchCourses = async (searchQuery, dispatch) => {
+  // const toastId = toast.loading("Loading...")
+  dispatch(setProgress(50));
+  let result = null;
+  try {
+    const response = await apiConnector("POST", SEARCH_COURSES_API, {
+      searchQuery: searchQuery,
+    });
+    console.log("SEARCH COURSES API RESPONSE............", response);
+    if (!response?.data?.success) {
+      throw new Error("Could Not Search Courses");
+    }
+    result = response?.data?.data;
+  } catch (error) {
+    console.log("SEARCH COURSES API ERROR............", error);
+    toast.error(error.message);
+  }
+  // toast.dismiss(toastId)
+  dispatch(setProgress(100));
+  return result;
+};
 
 //create category
 // export const createCategory = async (data, token) => {

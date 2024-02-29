@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
+import { HiSearch } from 'react-icons/hi'
 import { BsChevronDown } from "react-icons/bs"
 import { useSelector } from "react-redux"
-import { Link, matchPath, useLocation } from "react-router-dom"
+import { Link, matchPath, useLocation, useNavigate } from "react-router-dom"
 
 import logo from "../../assets/Logo/Logo-Full-Light.png"
 import { NavbarLinks } from "../../data/navbar-links"
@@ -19,8 +20,10 @@ function Navbar() {
   const { totalItems } = useSelector((state) => state.cart)
 
   const location = useLocation()
+  const navigate = useNavigate()
 
   const [subLinks, setSubLinks] = useState([])
+  const [searchValue, setSearchValue] = useState("")
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -43,6 +46,14 @@ function Navbar() {
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
   }
+
+  const handelSearch = (e) => {
+    e.preventDefault();
+    if (searchValue?.length > 0) {
+        navigate(`/search/${searchValue}`);
+        setSearchValue("");
+    }
+}
 
   return (
     <div
@@ -123,6 +134,10 @@ function Navbar() {
                 )}
               </li>
             ))}
+            <form onSubmit={handelSearch} className='flex items-center relative'>
+                            <input value={searchValue} onChange={(e) => { setSearchValue(e.target.value) }} id='searchinput' type="text" placeholder="Search" className=' absolute top-0 left-0 border-0 focus:ring-1 ring-richblack-400 rounded-full px-2 py-1 text-[15px] w-28 text-richblack-50 focus:outline-none focus:border-transparent bg-richblack-700' />
+                            <HiSearch type='submit' id='searchicon' size={20} className=" text-richblack-100 top-1 absolute cursor-pointer left-20" />
+                        </form>
           </ul>
         </nav>
 

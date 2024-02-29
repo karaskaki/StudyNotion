@@ -51,8 +51,8 @@ const VideoDetails = () => {
         setVideoEnded(false)
       }
     })()
-  }, [courseSectionData, courseEntireData, location.pathname, courseId, sectionId, subSectionId, navigate])
-  // courseSectionData, courseEntireData, location.pathname
+  }, [courseSectionData, courseEntireData, location.pathname, courseId, sectionId, subSectionId, navigate])   // courseSectionData, courseEntireData, location.pathname
+
 
 
   // check if the lecture is the first video of the course
@@ -62,9 +62,7 @@ const VideoDetails = () => {
       (data) => data._id === sectionId
     )
 
-    const currentSubSectionIndx = courseSectionData[
-      currentSectionIndx
-    ].subSection.findIndex((data) => data._id === subSectionId)
+    const currentSubSectionIndx = courseSectionData[currentSectionIndx].subSection.findIndex((data) => data._id === subSectionId)
 
     if (currentSectionIndx === 0 && currentSubSectionIndx === 0) {
       return true
@@ -84,9 +82,7 @@ const VideoDetails = () => {
     const noOfSubsections =
       courseSectionData[currentSectionIndx].subSection.length
 
-    const currentSubSectionIndx = courseSectionData[
-      currentSectionIndx
-    ].subSection.findIndex((data) => data._id === subSectionId)
+    const currentSubSectionIndx = courseSectionData[currentSectionIndx].subSection.findIndex((data) => data._id === subSectionId)
 
     if (
       currentSectionIndx === courseSectionData.length - 1 &&
@@ -133,7 +129,7 @@ const VideoDetails = () => {
       const nextSectionId = courseSectionData[currentSectionIndx + 1]._id
       const nextSubSectionId =
         courseSectionData[currentSectionIndx + 1].subSection[0]._id
-        // is video pe chale jao
+        // is video pe chale jao 
       navigate(
         `/view-course/${courseId}/section/${nextSectionId}/sub-section/${nextSubSectionId}`
       )

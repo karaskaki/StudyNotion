@@ -497,3 +497,33 @@ exports.deleteCourse = async (req, res) => {
     })
   }
 }
+
+ //search course by title,description and tags array
+ exports.searchCourse = async (req, res) => {
+	try {
+	  const  { searchQuery }  = req.body
+	//   console.log("searchQuery : ", searchQuery)
+	  const courses = await Course.find({
+		$or: [
+		  { courseName: { $regex: searchQuery, $options: "i" } },
+		  { courseDescription: { $regex: searchQuery, $options: "i" } },
+		  { tag: { $regex: searchQuery, $options: "i" } },
+		],
+  })
+  .populate({
+	path: "instructor",  })
+  .populate("category")
+  .populate("ratingAndReviews")
+  .exec();
+
+  return res.status(200).json({
+	success: true,
+	data: courses,
+	  })
+	} catch (error) {
+	  return res.status(500).json({
+		success: false,
+		message: error.message,
+	  })
+	}		
+}
