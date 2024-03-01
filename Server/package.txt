@@ -37,5 +37,5 @@ react-type-animation
  react-markdown
  copy-to-clipboard
  react-loading-skeleton
-  react-chartjs-2
-  chart.js
+ react-chartjs-2
+ chart.js
