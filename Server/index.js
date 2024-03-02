@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"http://localhost:3000",
+		origin:"https://subtle-narwhal-0382e4.netlify.app/",
 		credentials:true,
 	})
 )
