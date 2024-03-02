@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"https://subtle-narwhal-0382e4.netlify.app/",
+		origin:"https://65e3a610e2e471057e8dee0c--jolly-custard-6a87d9.netlify.app/",
 		credentials:true,
 	})
 )
