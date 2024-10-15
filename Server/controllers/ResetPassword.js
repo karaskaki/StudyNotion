@@ -32,7 +32,7 @@ exports.resetPasswordToken = async (req, res) => {
 		console.log("DETAILS", updatedDetails);
 
 		// create url
-		const url = `https://studynotion-ejlr.onrender.com/api/v1/update-password/${token}`;
+		const url = `https://65e4e405a44d6dd5c5845c5c--jolly-custard-6a87d9.netlify.app/update-password/${token}`;
 
 		// send mail containing the url
 		await mailSender(
