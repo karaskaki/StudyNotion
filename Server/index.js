@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "*",
+    origin: "https://nksingh-study-notion.netlify.app/",
     credentials: true,
   })
 );
