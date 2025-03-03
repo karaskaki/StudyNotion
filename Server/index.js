@@ -24,19 +24,11 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-<<<<<<< HEAD
   cors({
     origin: "https://nksingh-study-notion.netlify.app/",
     credentials: true,
   })
 );
-=======
-	cors({
-		origin:"https://nksingh-study-notion.netlify.app/",
-		credentials:true,
-	})
-)
->>>>>>> f4008c31b461ce2bda97d0d16f5ca5e4799c83a1
 
 app.use(
   fileUpload({
